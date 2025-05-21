@@ -1,21 +1,85 @@
 [
   {
-    "ContainingType": "Program\u002B\u003C\u003Ec__DisplayClass0_0",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0",
-    "RelativePath": "weatherforecast",
+    "ContainingType": "CreditosAcademicos.Controllers.EstudiantesController",
+    "Method": "ObtenerEstudiantes",
+    "RelativePath": "api/Estudiantes",
     "HttpMethod": "GET",
-    "IsController": false,
+    "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "WeatherForecast[]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CreditosAcademicos.Models.Entities.Estudiante, CreditoEducativoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
-          "application/json"
+          "text/plain",
+          "application/json",
+          "text/json"
         ],
         "StatusCode": 200
       }
+    ]
+  },
+  {
+    "ContainingType": "CreditosAcademicos.Controllers.EstudiantesController",
+    "Method": "ObtenerEstudiante",
+    "RelativePath": "api/Estudiantes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
     ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": [
+      {
+        "Type": "CreditosAcademicos.Models.Entities.Estudiante",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CreditosAcademicos.Controllers.EstudiantesController",
+    "Method": "RegistrarMaterias",
+    "RelativePath": "api/Estudiantes/{id}/registrar-materias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "materiaIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CreditosAcademicos.Controllers.EstudiantesController",
+    "Method": "RegistrarEstudiante",
+    "RelativePath": "api/Estudiantes/registrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "estudiante",
+        "Type": "CreditosAcademicos.Models.Entities.Estudiante",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
