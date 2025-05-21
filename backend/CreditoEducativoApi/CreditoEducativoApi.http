@@ -1,0 +1,6 @@
+@CreditoEducativoApi_HostAddress = http://localhost:5257
+
+GET {{CreditoEducativoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Jy1AScyuYJs=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sofi_\\GitHub Projects\\CreditosAcademicos\\backend\\CreditoEducativoApi\\CreditoEducativoApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sofi_\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.1\\microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
+    "C:\\Users\\sofi_\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
