@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CreditoEducativoApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9345e4634652ab0ba3f2cd0c7c2bee0dada5b5fb")]
 [assembly: System.Reflection.AssemblyProductAttribute("CreditoEducativoApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CreditoEducativoApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
