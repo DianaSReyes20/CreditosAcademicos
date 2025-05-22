@@ -65,7 +65,7 @@ namespace CreditosAcademicos.Controllers
             // Cambiar List<int> por clase RegistroMateriasRequest
             if (request?.MateriaIds == null)
             {
-                return BadRequest("La lista de materias es requerida");
+                return BadRequest("La lista de materias es requerida, por favor diligenciarla");
             }
 
             var materiaIds = request.MateriaIds;
