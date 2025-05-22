@@ -25,5 +25,26 @@ namespace CreditosAcademicos.Controllers
                 .Include(e => e.Profesor)
                 .ToListAsync();
         }
+
+        // GET: api/materias/{id}/estudiantes
+        [HttpGet("{id}/estudiantes")]
+        public async Task<ActionResult<IEnumerable<object>>> ObtenerMateriasPorEstudiante(int id)
+        {
+            var estudiantes = await _context.Registros
+            .Where(em => em.MateriaId == id)
+            .Select(em => new {
+                em.Estudiante.Id,
+                em.Estudiante.Nombre,
+                em.Estudiante.Apellido
+            })
+            .ToListAsync();
+
+            if (estudiantes == null || estudiantes.Count == 0)
+            {
+                return NotFound($"No se encontraron estudiantes para la materia con ID {id}");
+            }
+
+            return Ok(estudiantes);
+        }
     }
 }

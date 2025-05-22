@@ -138,6 +138,33 @@ namespace CreditosAcademicos.Controllers
                 .ThenInclude(r => r.Materia)
                 .ToListAsync();
         }
+
+        // GET: api/estudiantes/materias/{id}
+        [HttpGet("{id}/materias")]
+        public async Task<ActionResult<IEnumerable<object>>> ObtenerEstudianteMateria(int id)
+        {
+            var estudiante = await _context.Estudiantes
+                .Include(e => e.Registros)
+                    .ThenInclude(r => r.Materia)
+                .ThenInclude(m => m.Profesor)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (estudiante == null)
+            {
+                return NotFound($"No se encontró el estudiante con ID {id}");
+            }
+
+            var materias = estudiante.Registros.Select(r => new
+            {
+                MateriaId = r.Materia.Id,
+                Nombre = r.Materia.Nombre,
+                Creditos = r.Materia.Creditos,
+                Profesor = r.Materia.Profesor?.Nombre,
+                FechaRegistro = r.Fecha
+            }).ToList();
+
+            return Ok(materias);
+        }
     }
     public class RegistroMateriasRequest
     {
