@@ -20,6 +20,11 @@ namespace CreditosAcademicos.Data
             modelBuilder.Entity<Registro>()
                 .HasIndex(r => new { r.EstudianteId, r.MateriaId })
                 .IsUnique();
+            
+            modelBuilder.Entity<Materia>()
+                .HasOne(m => m.Profesor)
+                .WithMany()
+                .HasForeignKey(m => m.ProfesorId);
         }
     }
 }

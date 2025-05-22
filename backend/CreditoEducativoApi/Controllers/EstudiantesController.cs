@@ -1,4 +1,5 @@
-﻿using CreditosAcademicos.Data;
+﻿using Azure.Core;
+using CreditosAcademicos.Data;
 using CreditosAcademicos.Models;
 using CreditosAcademicos.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -59,8 +60,16 @@ namespace CreditosAcademicos.Controllers
 
         // POST: api/estudiantes/1/registrar-materias
         [HttpPost("{id}/registrar-materias")]
-        public async Task<IActionResult> RegistrarMaterias(int id, [FromBody] List<int> materiaIds)
+        public async Task<IActionResult> RegistrarMaterias(int id, [FromBody] RegistroMateriasRequest request)
         {
+            // Cambiar List<int> por clase RegistroMateriasRequest
+            if (request?.MateriaIds == null)
+            {
+                return BadRequest("La lista de materias es requerida");
+            }
+
+            var materiaIds = request.MateriaIds;
+
             // Validar que el estudiante existe
             var estudiante = await _context.Estudiantes.FindAsync(id);
             if (estudiante == null)
@@ -76,7 +85,7 @@ namespace CreditosAcademicos.Controllers
 
             // Obtener las materias con sus profesores
             var materias = await _context.Materias
-                .Include(m => m.ProfesorId)
+                .Include(e => e.Profesor)
                 .Where(m => materiaIds.Contains(m.Id))
                 .ToListAsync();
 
@@ -98,7 +107,8 @@ namespace CreditosAcademicos.Controllers
             {
                 EstudianteId = id,
                 MateriaId = m.Id,
-                FechaRegistro = DateTime.Now
+                ProfesorId = m.ProfesorId,
+                Fecha = DateTime.Now
             }).ToList();
 
             try
@@ -128,5 +138,9 @@ namespace CreditosAcademicos.Controllers
                 .ThenInclude(r => r.Materia)
                 .ToListAsync();
         }
+    }
+    public class RegistroMateriasRequest
+    {
+        public List<int> MateriaIds { get; set; }
     }
 }

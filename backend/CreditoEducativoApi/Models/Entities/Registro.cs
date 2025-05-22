@@ -9,6 +9,6 @@
         public Materia? Materia { get; set; }
         public int? ProfesorId { get; set; }
         public Profesor? Profesor { get; set; }
-        public DateTime FechaRegistro { get; set; } = DateTime.Now;
+        public DateTime Fecha { get; set; } = DateTime.Now;
     }
 }

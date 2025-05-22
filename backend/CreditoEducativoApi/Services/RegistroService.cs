@@ -47,7 +47,7 @@ namespace CreditosAcademicos.Services
                     EstudianteId = request.EstudianteId,
                     MateriaId = m.Id,
                     ProfesorId = m.ProfesorId,
-                    FechaRegistro = DateTime.Now
+                    Fecha = DateTime.Now
                 }).ToList();
 
                 _context.Registros.AddRange(registros);

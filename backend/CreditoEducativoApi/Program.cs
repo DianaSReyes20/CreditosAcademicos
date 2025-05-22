@@ -8,11 +8,21 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowAll", builder => {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 // Configurar pipeline HTTP
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.MapControllers(); // ← Esta línea es crucial
+app.MapControllers(); 
 
 app.Run();
