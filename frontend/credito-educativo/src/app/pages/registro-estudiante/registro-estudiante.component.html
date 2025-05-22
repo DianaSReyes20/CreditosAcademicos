@@ -1,0 +1,54 @@
+<!-- student-registration.component.html -->
+<div class="registration-container">
+  <h2>Registro de Estudiante</h2>
+  <form [formGroup]="registroEstudianteForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">Nombre:</label>
+      <input type="text" id="firstName" formControlName="nombre" class="form-control">
+      <div *ngIf="registroEstudianteForm.get('firstName')?.invalid && registroEstudianteForm.get('firstName')?.touched" class="error-message">
+        Campo obligatorio
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Apellido:</label>
+      <input type="text" id="lastName" formControlName="apellido" class="form-control">
+      <div *ngIf="registroEstudianteForm.get('lastName')?.invalid && registroEstudianteForm.get('lastName')?.touched" class="error-message">
+        Campo obligatorio
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control">
+      <div *ngIf="registroEstudianteForm.get('email')?.invalid && registroEstudianteForm.get('email')?.touched" class="error-message">
+        Por favor ingrese un email válido
+      </div>
+    </div>
+
+    <div class="form-group2">
+      <label for="program">Programa Académico:</label>
+      <select id="program" formControlName="programa" class="form-control">
+        <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="!registroEstudianteForm.valid" class="btn btn-primary">
+      Registrar
+    </button>
+
+    <!--Informción de error o confirmación de registro-->
+    <div *ngIf="loading" class="loading-indicator">
+        Registrando estudiante...
+    </div>
+
+    <div *ngIf="registrationSuccess" class="alert alert-success">
+        <p>✅ ¡Registro exitoso!</p>
+        <p>Serás redirigido a la selección de materias ...</p>
+    </div>
+
+    <div *ngIf="registrationError" class="alert alert-error">
+        <span class="icon">❌</span> {{ registrationError }}
+    </div>
+  </form>
+</div>

@@ -1,0 +1,91 @@
+.registration-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  background-color: #ffffffcc;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.registration-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  padding-right: 2rem;
+}
+
+.form-group2 {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #6c63ff;
+  outline: none;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+button.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #6c63ff;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.btn:hover {
+  background-color: #554ae0;
+}
+
+button.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.alert-error {
+  background-color: #fdecea;
+  color: #a52727;
+  border-left: 5px solid #ea4335;
+  height: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+}   
+
+.alert-success {
+  background-color: #d9e7e0;
+  color: #21aa5f;
+  border-left: 5px solid #10914a;
+  height: 4.5rem;
+  padding: 0rem 0.5rem;
+  margin-top: 1rem;
+}   
