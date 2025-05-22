@@ -100,7 +100,7 @@ export class SeleccionMateriasComponent implements OnInit {
     this.isLoading = true;
     this.apiService.registrarMaterias(this.estudianteId, this.materiasSeleccionadas).subscribe({
       next: () => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard', this.estudianteId]);
       },
       error: (err) => {
         this.errorMessage = err.error?.message || 'Error al registrar materias';

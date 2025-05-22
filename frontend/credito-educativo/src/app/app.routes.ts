@@ -6,6 +6,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 export const routes: Routes = [
   { path: 'registro-estudiante', component: RegistroEstudianteComponent },
   { path: 'seleccion-materias/:id', component: SeleccionMateriasComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard/:id', component: DashboardComponent },
   { path: '', redirectTo: '/registro-estudiante', pathMatch: 'full' }
 ];

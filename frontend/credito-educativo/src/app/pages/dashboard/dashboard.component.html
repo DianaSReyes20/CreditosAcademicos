@@ -1,9 +1,5 @@
-<!-- <div *ngFor="let idMateria of materiasSeleccionadas" class="materia-card">
-    <p>{{idMateria}}</p>
-  <button mat-button (click)="abrirModalCompaneros(idMateria)">Ver compañeros de clase</button>
-</div> -->
 <div class="seleccion-container">
-  <h2>Dashboard</h2>
+  <h2><mat-icon matListIcon color="accent">newspaper</mat-icon> Bienvenido a tu Dashboard</h2>
   
   <!-- Loading state -->
   <div *ngIf="isLoading" class="loading">
@@ -12,15 +8,27 @@
   </div>
 
   <!-- Materias seleccionadas-->
-  <div *ngIf="!isLoading && materiasSeleccionadas.length > 0" class="materia-lista">
+  <p class="instructions">Has registrado las siguientes materias:</p>
+  <section *ngIf="!isLoading && materiasSeleccionadas.length > 0" class="materia-lista">
     <div 
       *ngFor="let materia of materiasSeleccionadas" 
       class="materia-card">
 
       <h3>{{ materia.nombre }}</h3>
-      <p>Profesor: {{ materia.profesor?.nombre}} {{ materia.profesor?.apellido}}</p>
+      <p>Profesor: {{ materia.profesor}}</p>
       <p>Créditos: {{ materia.creditos }}</p>
-      <button (click)="abrirModalCompaneros(materia.id)">Ver compañeros de clase</button>
+      <button class="button" (click)="abrirModalAlumnos(materia.materiaId)">Ver compañeros de clase</button>
     </div>
+  </section>
+
+  <!-- Estudiantes registrados-->
+<section class="otros-estudiantes">
+  <h3>👥 Ver registro de otros estudiantes</h3>
+  <div class="estudiante-item" *ngFor="let estudiante of otrosEstudiantes">
+    <span>{{ estudiante.nombre }} {{ estudiante.apellido }}</span>
+    <button class="button-detalle" mat-stroked-button color="primary" (click)="verRegistroEstudiante(estudiante)">
+      <mat-icon>visibility</mat-icon>
+    </button>
   </div>
+</section>
 </div>

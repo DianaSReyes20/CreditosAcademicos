@@ -1,12 +1,25 @@
-<h2 mat-dialog-title>Estudiantes en materiax</h2>
-    <mat-dialog-content>
-      <ul *ngIf="estudiantesMateria.length > 0; else sinCompaneros">
-        <li *ngFor="let companero of estudiantesMateria">{{ companero.nombre }} {{ companero.apellido }}</li>
-      </ul>
-      <ng-template #sinCompaneros>
-        <p>No hay otros compañeros en esta clase aún.</p>
-      </ng-template>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cerrar</button>
-    </mat-dialog-actions>
+<!-- Top bar con color primario y título -->
+<div class="modal-header">
+  <mat-icon matListIcon color="accent">groups</mat-icon>
+  <span>Estudiantes en "{{ materia }}"</span>
+</div>
+
+<!-- Contenido del listado -->
+<mat-dialog-content class="modal-content">
+  <mat-list *ngIf="estudiantesMateria.length > 0; else sinCompaneros">
+    <mat-list-item *ngFor="let companero of estudiantesMateria">
+      <div matLine><mat-icon matListIcon color="accent">stop</mat-icon>{{ companero.nombre }} {{ companero.apellido }}</div>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-template #sinCompaneros>
+    <p class="no-students">No hay otros compañeros en esta clase aún.</p>
+  </ng-template>
+</mat-dialog-content>
+
+<!-- Acciones -->
+<mat-dialog-actions align="end">
+  <button mat-stroked-button color="primary" mat-dialog-close>
+    <mat-icon>close</mat-icon> Cerrar
+  </button>
+</mat-dialog-actions>

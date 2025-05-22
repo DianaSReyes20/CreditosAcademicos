@@ -31,8 +31,23 @@ p {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1rem;
   margin-bottom: 1.5rem;
-  padding-top: 2rem;
 }
+
+.mis-materias {
+  margin-bottom: 2rem;
+}
+
+.materias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.otros-estudiantes {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
 
 .materia-card {
   padding: 1rem;
@@ -64,12 +79,21 @@ p {
   font-weight: bold;
 }
 
-button {
+.button {
   margin-top: 1rem;
   background-color: #7d94c5;
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button-detalle {
+  background-color: #682268;
+  color: white;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
@@ -97,4 +121,12 @@ button[disabled] {
   color: #bd9898;
   margin-top: 1rem;
   font-style: italic;
+}
+
+.estudiante-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
 }
