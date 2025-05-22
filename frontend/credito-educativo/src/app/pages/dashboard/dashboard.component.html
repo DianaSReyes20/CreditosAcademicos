@@ -1,4 +1,26 @@
-<div *ngFor="let idMateria of estudianteActual.materiasSeleccionadas" class="materia-card">
-  <h3>{{ obtenerNombreMateria(idMateria) }}</h3>
+<!-- <div *ngFor="let idMateria of materiasSeleccionadas" class="materia-card">
+    <p>{{idMateria}}</p>
   <button mat-button (click)="abrirModalCompaneros(idMateria)">Ver compañeros de clase</button>
+</div> -->
+<div class="seleccion-container">
+  <h2>Dashboard</h2>
+  
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Cargando materias disponibles...</p>
+  </div>
+
+  <!-- Materias seleccionadas-->
+  <div *ngIf="!isLoading && materiasSeleccionadas.length > 0" class="materia-lista">
+    <div 
+      *ngFor="let materia of materiasSeleccionadas" 
+      class="materia-card">
+
+      <h3>{{ materia.nombre }}</h3>
+      <p>Profesor: {{ materia.profesor?.nombre}} {{ materia.profesor?.apellido}}</p>
+      <p>Créditos: {{ materia.creditos }}</p>
+      <button (click)="abrirModalCompaneros(materia.id)">Ver compañeros de clase</button>
+    </div>
+  </div>
 </div>

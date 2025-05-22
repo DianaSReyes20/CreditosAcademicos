@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ApiService } from '../../services/api.service'; 
 
 @Component({
   selector: 'app-modal-alumnos',
@@ -11,23 +12,29 @@ import { MatDialogModule } from '@angular/material/dialog';
 export class ModalAlumnosComponent {
   estudiantes: any[] = [];
   materia: string = '';
-  data: any = {
-    estudiantes: [],
-    materia: ''
-  };
+  estudiantesMateria: any[] = [];
 
   constructor(
-    //@Inject('data') private data: any
+    private apiService: ApiService
   ) {
-    this.estudiantes = this.data.estudiantes;
-    this.materia = this.data.materia;
+    this.estudiantes = this.estudiantesMateria;
+    this.materia = 'Nombre de la materia';
+  }
+
+  ngOnInit() {
+    this.obtenerListadoAlumnosMateria();
+    console.log(this.estudiantesMateria);
+  }
+
+  obtenerListadoAlumnosMateria() {
+    this.apiService.obtenerEstudiantesMateria(3)
+      .subscribe(data => {
+        this.estudiantesMateria = data;
+        console.log('estudiantesMateria: ', data);
+      });
   }
 
   cerrarModal() {
     // Lógica para cerrar el modal
-  }
-
-  ngOnInit() {
-    console.log(this.estudiantes);
   }
 }

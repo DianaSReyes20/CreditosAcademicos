@@ -35,7 +35,21 @@ export class ApiService {
   }
 
    obtenerEstudiantesMateria(materiaId: number): Observable<Estudiante[]> {
-    return this.http.get<Estudiante[]>(`${this.apiUrl}/estudiantes/materia/` + materiaId, {
+    return this.http.get<Estudiante[]>(`${this.apiUrl}/materias/` + materiaId + `/estudiantes`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).pipe(
+      catchError(error => {
+        console.error('Error completo:', error);
+        throw 'Error de conexión: Verifica que el backend esté corriendo en '+this.apiUrl;
+      })
+    );
+  }
+
+  obtenerMateriasEstudiante(estudianteId: number): Observable<Materia[]> {
+    return this.http.get<Materia[]>(`${this.apiUrl}/estudiantes/` + estudianteId + `/materias`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
