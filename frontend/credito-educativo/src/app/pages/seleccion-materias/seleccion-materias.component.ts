@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-seleccion-materias',
@@ -22,17 +23,18 @@ export class SeleccionMateriasComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    // Obtener ID del estudiante desde el estado o localStorage
-    this.estudianteId = Number(localStorage.getItem('estudianteId'));
+    // Obtener ID del estudiante por snapshot
+    this.estudianteId = +this.route.snapshot.params['id'];
     
-    // if (!this.estudianteId) {
-    //   this.router.navigate(['/registro']);
-    //   return;
-    // }
+    if (!this.estudianteId) {
+      this.router.navigate(['/registro']);
+      return;
+    }
 
     this.cargarMaterias();
   }
@@ -90,7 +92,6 @@ export class SeleccionMateriasComponent implements OnInit {
   }
 
   confirmarSeleccion(): void {
-    this.estudianteId = 1;
     if (!this.estudianteId || this.materiasSeleccionadas.length !== 3) {
       this.errorMessage = 'Debes seleccionar exactamente 3 materias';
       return;

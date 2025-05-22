@@ -52,9 +52,8 @@ export class RegistroEstudianteComponent {
           this.loading = false;
           this.registrationSuccess = true;
 
-          //this.router.navigate(['/seleccion-materias', response.id]);
           setTimeout(() => {
-            this.router.navigate(['/seleccion-materias']);
+            this.router.navigate(['/seleccion-materias', response.id]);
           }, 3000);
         },
         error: (err) => {

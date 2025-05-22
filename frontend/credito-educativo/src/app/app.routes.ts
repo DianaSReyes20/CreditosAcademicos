@@ -4,6 +4,6 @@ import { RegistroEstudianteComponent } from './pages/registro-estudiante/registr
 
 export const routes: Routes = [
   { path: 'registro-estudiante', component: RegistroEstudianteComponent },
-  { path: 'seleccion-materias', component: SeleccionMateriasComponent },
+  { path: 'seleccion-materias/:id', component: SeleccionMateriasComponent },
   { path: '', redirectTo: '/registro-estudiante', pathMatch: 'full' }
 ];
