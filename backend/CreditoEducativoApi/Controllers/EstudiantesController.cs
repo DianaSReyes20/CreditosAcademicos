@@ -130,13 +130,25 @@ namespace CreditosAcademicos.Controllers
         }
 
         // GET: api/estudiantes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Estudiante>>> ObtenerEstudiantes()
+        [HttpGet("registros")]
+        public async Task<ActionResult<List<Estudiante>>> ObtenerEstudiantes()
         {
-            return await _context.Estudiantes
-                .Include(e => e.Registros)
+            var estudiantes = await _context.Estudiantes
+            .Include(e => e.Registros)
                 .ThenInclude(r => r.Materia)
-                .ToListAsync();
+            .Where(e => e.Registros.Any())
+            .ToListAsync();
+
+                // Tomar solo el primer registro por estudiante (por ejemplo, por Fecha)
+                foreach (var estudiante in estudiantes)
+                {
+                    estudiante.Registros = estudiante.Registros
+                        .OrderBy(r => r.Fecha) // o por ID
+                        .Take(1)
+                        .ToList();
+                }
+
+            return Ok(estudiantes);
         }
 
         // GET: api/estudiantes/materias/{id}
@@ -151,7 +163,7 @@ namespace CreditosAcademicos.Controllers
 
             if (estudiante == null)
             {
-                return NotFound($"No se encontró el estudiante con ID {id}");
+                return NotFound($"No se encontró estudiante registrados en la materia con ID {id}");
             }
 
             var materias = estudiante.Registros.Select(r => new
@@ -159,7 +171,7 @@ namespace CreditosAcademicos.Controllers
                 MateriaId = r.Materia.Id,
                 Nombre = r.Materia.Nombre,
                 Creditos = r.Materia.Creditos,
-                Profesor = r.Materia.Profesor?.Nombre,
+                Profesor = r.Materia.Profesor?.Nombre + ' ' + r.Materia.Profesor?.Apellido,
                 FechaRegistro = r.Fecha
             }).ToList();
 

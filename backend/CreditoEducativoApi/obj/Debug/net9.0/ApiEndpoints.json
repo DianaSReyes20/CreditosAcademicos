@@ -1,26 +1,6 @@
 [
   {
     "ContainingType": "CreditosAcademicos.Controllers.EstudiantesController",
-    "Method": "ObtenerEstudiantes",
-    "RelativePath": "api/Estudiantes",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CreditosAcademicos.Models.Entities.Estudiante, CreditoEducativoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CreditosAcademicos.Controllers.EstudiantesController",
     "Method": "ObtenerEstudiante",
     "RelativePath": "api/Estudiantes/{id}",
     "HttpMethod": "GET",
@@ -107,6 +87,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CreditosAcademicos.Controllers.EstudiantesController",
+    "Method": "ObtenerEstudiantes",
+    "RelativePath": "api/Estudiantes/registros",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CreditosAcademicos.Models.Entities.Estudiante, CreditoEducativoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CreditosAcademicos.Controllers.MateriasController",

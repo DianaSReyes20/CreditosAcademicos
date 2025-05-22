@@ -41,7 +41,7 @@ namespace CreditosAcademicos.Controllers
 
             if (estudiantes == null || estudiantes.Count == 0)
             {
-                return NotFound($"No se encontraron estudiantes para la materia con ID {id}");
+                return NotFound($"No se encontraron materias registradas por el estudiante con ID {id}");
             }
 
             return Ok(estudiantes);
