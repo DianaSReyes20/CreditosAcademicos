@@ -47,7 +47,7 @@ export class ApiService {
 
     return this.http.post(
       `${this.apiUrl}/estudiantes/${estudianteId}/registrar-materias`, 
-      { materias: materiaIds }
+      { materiaIds: materiaIds }
     ).pipe(
       catchError((error) => {
         console.error('Error al registrar materias:', error);   
