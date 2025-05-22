@@ -1,0 +1,100 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.seleccion-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.materia-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-top: 2rem;
+}
+
+.materia-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.materia-card:hover {
+  background-color: #eef4ff;
+  border-color: #a8c3ff;
+}
+
+.materia-card.selected {
+  border: 2px solid #4caf50;
+  background-color: #e8f5e9;
+}
+
+.materia-card.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.estado {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 1rem;
+  background-color: #7d94c5;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #4e6cad;
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #fdecea;
+  color: #a52727;
+  border-left: 5px solid #ea4335;
+  height: 2rem;
+  padding: 1rem 1rem;
+}
+
+.info-text {
+  font-size: 0.9rem;
+  color: #bd9898;
+  margin-top: 1rem;
+  font-style: italic;
+}

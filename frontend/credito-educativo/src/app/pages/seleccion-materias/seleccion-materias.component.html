@@ -1,0 +1,55 @@
+<div class="seleccion-container">
+  <h2>Selección de Materias</h2>
+  <p class="instructions">Selecciona exactamente <b>(3)</b> materias con profesores distintos</p>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="errorMessage" class="error-message">
+    <span class="icon">❌</span>
+    {{ errorMessage }}
+  </div>
+
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Cargando materias disponibles...</p>
+  </div>
+
+  <!-- Listado de materias -->
+  <div *ngIf="!isLoading && materias.length > 0" class="materia-lista">
+    <div 
+      *ngFor="let materia of materias" 
+      class="materia-card"
+      [class.selected]="materiaEstaSeleccionada(materia.id)"
+      [class.disabled]="materiaEstaSeleccionada(materia.id) ? false : 
+                      (materiasSeleccionadas.length >= 3 || tieneMismoProfesor(materia.profesorId))"
+      (click)="toggleSeleccion(materia.id)">
+
+      <!-- Ícono de candado si está deshabilitado por profesor -->
+      <span *ngIf="!materiaEstaSeleccionada(materia.id) && tieneMismoProfesor(materia.profesorId)" 
+        class="info-text"
+        aria-label="Materia no disponible">🔒 Profesor ya seleccionado</span>
+
+      <!-- Ícono de selección si está seleccionada -->
+      <!-- <span *ngIf="materiaEstaSeleccionada(materia.id)">✔️</span> -->
+
+      <h3>{{ materia.nombre }}</h3>
+      <p>Profesor: {{ materia.profesor?.nombre}} {{ materia.profesor?.apellido}}</p>
+      <p>Créditos: {{ materia.creditos }}</p>
+    </div>
+  </div>
+
+  <!-- Resumen de selección -->
+  <div class="estado">
+    Materias seleccionadas: {{ materiasSeleccionadas.length }}/3 <br />
+    Total créditos: {{ calcularCreditos() }}/9
+  </div>
+
+  <!-- Botón de confirmación -->
+  <button 
+    mat-raised-button 
+    (click)="confirmarSeleccion()"
+    [disabled]="materiasSeleccionadas.length !== 3 || isLoading">
+    <span *ngIf="!isLoading">Confirmar selección</span>
+    <span *ngIf="isLoading">Procesando...</span>
+  </button>
+</div>
