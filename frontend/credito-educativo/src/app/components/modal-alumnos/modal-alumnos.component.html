@@ -1,1 +1,12 @@
-<p>modal-alumnos works!</p>
+<h2 mat-dialog-title>Estudiantes en {{ data.materia }}</h2>
+    <mat-dialog-content>
+      <ul *ngIf="data.companeros.length > 0; else sinCompaneros">
+        <li *ngFor="let companero of data.companeros">{{ companero.nombre }}</li>
+      </ul>
+      <ng-template #sinCompaneros>
+        <p>No hay otros compañeros en esta clase aún.</p>
+      </ng-template>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>

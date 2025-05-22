@@ -3,25 +3,18 @@ import { ModalAlumnosComponent } from '../../components/modal-alumnos/modal-alum
 import { ApiService } from '../../services/api.service';
 
 export class DashboardComponent {
-  // estudianteActual = 1;
-  // estudiantes = this.apiService.getTodos();
 
-  // constructor(private dialog: MatDialog, private apiService: ApiService) {}
+  constructor(private dialog: MatDialog, private apiService: ApiService) {}
 
-  // obtenerNombreMateria(id: number): string {
-  //   return this.apiService.getNombreMateria(id);
-  // }
+  abrirModalCompaneros(materiaId: number) {
+    var estudianteActual = 1;
+    var estudiantes = this.apiService.obtenerEstudiantesMateria(estudianteActual);
 
-  // abrirModalCompaneros(idMateria: number) {
-  //   const companeros = this.estudiantes.filter(e =>
-  //     e.id !== this.estudianteActual.id && e.materiasSeleccionadas.includes(idMateria)
-  //   );
-
-  //   this.dialog.open(ModalAlumnosComponent, {
-  //     data: {
-  //       materia: this.obtenerNombreMateria(idMateria),
-  //       companeros
-  //     }
-  //   });
-  // }
+    this.dialog.open(ModalAlumnosComponent, {
+      data: {
+        materia: "Nombre de la materia",
+        estudiantes: estudiantes,
+      }
+    });
+  }
 }

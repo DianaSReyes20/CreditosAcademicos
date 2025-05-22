@@ -1,1 +1,4 @@
-<p>dashboard works!</p>
+<div *ngFor="let idMateria of estudianteActual.materiasSeleccionadas" class="materia-card">
+  <h3>{{ obtenerNombreMateria(idMateria) }}</h3>
+  <button mat-button (click)="abrirModalCompaneros(idMateria)">Ver compañeros de clase</button>
+</div>
